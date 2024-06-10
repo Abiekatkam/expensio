@@ -13,37 +13,35 @@ export const metadata = {
 export default function HomeLayout({ children }) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning="true">
-        <body className={`flex h-full flex-col text-gray-600 antialiased`}>
-          <NextTopLoader color="#7c3aed" height={2} showSpinner={false} />
-          {/* authprovider */}
-          {/* theme provider */}
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <main className="relative flex min-h-full min-w-full bg-background dark:bg-[#09090a]">
-              <SidebarContextProvider>
-                <Sidebar />
-                <div className="h-full w-full sm:ml-[64px]">
-                  <div className="flex h-full w-full flex-col max-sm:ml-0">
-                    {children}
-                  </div>
+      <div className="flex h-full flex-col text-gray-600 antialiased">
+        <NextTopLoader color="#7c3aed" height={2} showSpinner={false} />
+        {/* authprovider */}
+        {/* theme provider */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="relative flex min-h-full min-w-full bg-background dark:bg-[#09090a]">
+            <SidebarContextProvider>
+              <Sidebar />
+              <div className="h-full w-full sm:ml-[64px]">
+                <div className="flex h-full w-full flex-col max-sm:ml-0">
+                  {children}
                 </div>
-              </SidebarContextProvider>
-            </main>
-          </ThemeProvider>
-          <Toaster
-            closeButton
-            position="top-right"
-            theme="system"
-            visibleToasts={3}
-            richColors
-          />
-        </body>
-      </html>
+              </div>
+            </SidebarContextProvider>
+          </main>
+        </ThemeProvider>
+        <Toaster
+          closeButton
+          position="top-right"
+          theme="system"
+          visibleToasts={3}
+          richColors
+        />
+      </div>
     </>
   );
 }
