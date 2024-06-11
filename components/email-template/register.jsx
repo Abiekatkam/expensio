@@ -26,7 +26,7 @@ export const RegisterEmail = ({ action_link = "" }) => {
         <Preview>Register link to {applicationClientUrls.config.appName}</Preview>
         <Body className="bg-white my-auto mx-auto font-sans">
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
-          <Section className="mt-[22px]">
+          <Section className="mt-[22px] bg-white">
               <Img
                 src={applicationClientUrls.social.appLogoUrl}
                 width="50"
