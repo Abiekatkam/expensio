@@ -57,8 +57,8 @@ export const emails = {
   },
   sent: "We just sent an email with magic link, check your inbox.",
   from: "Abhishek from Expensio, <abiekatkamproject@gmail.com>",
-  signin: { subject: "Login link for Expensio" },
-  signup: { subject: "Register link for Expensio" },
+  login: { subject: "Login link for Expensio" },
+  register: { subject: "Register link for Expensio" },
 };
 
 export default messages;

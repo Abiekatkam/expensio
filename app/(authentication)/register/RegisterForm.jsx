@@ -1,4 +1,5 @@
 "use client";
+import { applicationServerUrls } from "@/components/constant/urls";
 import CircleLoader from "@/components/loader/CircleLoader";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -11,13 +12,38 @@ const RegisterForm = () => {
     success: false,
     error: "",
   });
-  
+
+  const handleRegister = async () => {
+    setState((prev) => ({ ...prev, loading: true, error: "", success: false }));
+
+    try {
+      const res = await fetch(applicationServerUrls.auth.register, {
+        method: "POST",
+        body: JSON.stringify({ email: state.email }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.message);
+      }
+      setState((prev) => ({
+        ...prev,
+        success: true,
+        loading: false,
+        email: "",
+      }));
+    } catch (error) {
+      setState((prev) => ({ ...prev, error: error.message, loading: false }));
+    }
+  };
+
   return (
     <form
       className="grid relative w-full grid-cols-1 items-center gap-3 text-gray-800"
       onSubmit={(event) => {
         event.preventDefault();
-        //   handleRegister();
+        handleRegister();
       }}
     >
       <label className="mb-1 block">

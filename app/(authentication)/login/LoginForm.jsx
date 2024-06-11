@@ -1,23 +1,49 @@
-'use client'
-import CircleLoader from '@/components/loader/CircleLoader';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import React, { useState } from 'react'
+"use client";
+import { applicationServerUrls } from "@/components/constant/urls";
+import CircleLoader from "@/components/loader/CircleLoader";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import React, { useState } from "react";
 
 const LoginForm = () => {
-    const [state, setState] = useState({
+  const [state, setState] = useState({
+    loading: false,
+    email: "",
+    success: false,
+    error: "",
+  });
+
+  const handleLogin = async () => {
+    setState((prev) => ({ ...prev, loading: true, error: "", success: false }));
+
+    try {
+      const res = await fetch(applicationServerUrls.auth.login, {
+        method: "POST",
+        body: JSON.stringify({ email: state.email }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.message);
+      }
+      setState((prev) => ({
+        ...prev,
+        success: true,
         loading: false,
         email: "",
-        success: false,
-        error: "",
-      });
-    
+      }));
+    } catch (error) {
+      setState((prev) => ({ ...prev, error: error.message, loading: false }));
+    }
+  };
+
   return (
     <form
       className="grid w-full grid-cols-1 items-center gap-4 text-gray-800"
       onSubmit={(event) => {
         event.preventDefault();
-        // handleLogin();
+        handleLogin();
       }}
     >
       <label className="mb-1 block">
@@ -58,24 +84,26 @@ const LoginForm = () => {
       </p>
 
       <p
-        className={`mb-6 h-[50px] text-center text-sm font-medium ${
+        className={`h-[50px] text-center text-xs font-medium mt-2 ${
           (state.success && !state.error) || (!state.success && state.error)
             ? ""
             : "hidden"
         }`}
       >
         {state.success && !state.error ? (
-          <span className="text-green-700">
+          <span className="text-green-700 bg-green-100 p-2 rounded-md">
             We just sent an email with magic link, check your inbox.
           </span>
         ) : null}
 
         {!state.success && state.error ? (
-          <span className="text-red-500">{state.error}</span>
+          <span className="text-red-500 bg-red-100 p-2 rounded-md">
+            {state.error}
+          </span>
         ) : null}
       </p>
     </form>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

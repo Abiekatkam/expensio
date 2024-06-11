@@ -12,7 +12,7 @@ export default function Footer() {
 				<Link href={baseUrl} target="_blank" style={{ ...link, textDecoration: 'underline' }}>
 					{applicationClientUrls.config.appName}
 				</Link>{' '}
-				· Seamlessly Track Your Expenses.
+				· Manage your expense easily.
 			</Text>
 		</>
 	);

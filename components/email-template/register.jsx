@@ -6,8 +6,10 @@ import {
   Head,
   Heading,
   Html,
+  Img,
   Link,
   Preview,
+  Section,
   Tailwind,
   Text,
 } from "@react-email/components";
@@ -24,6 +26,15 @@ export const RegisterEmail = ({ action_link = "" }) => {
         <Preview>Register link to {applicationClientUrls.config.appName}</Preview>
         <Body className="bg-white my-auto mx-auto font-sans">
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
+          <Section className="mt-[22px]">
+              <Img
+                src={applicationClientUrls.social.appLogoUrl}
+                width="50"
+                height="50"
+                alt="Logo"
+                className="block m-auto"
+              />
+            </Section>
             <Heading className="text-black text-[24px] font-normal text-center p-0 mb-[24px] mt-[22px] mx-0">
               Magic Link
             </Heading>
@@ -49,7 +60,7 @@ export const RegisterEmail = ({ action_link = "" }) => {
 							</Row>
 						</Text> */}
             <Text className="text-gray-500 mt-[16px]">
-              If you didn{"'"}t try to Sign up, you can safely ignore this
+              If you didn{"'"}t try to register, you can safely ignore this
               email.
             </Text>
             <Footnote hideNote={true} />

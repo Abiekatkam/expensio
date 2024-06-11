@@ -24,7 +24,7 @@ import { useSidebar } from "@/components/providers/sidebar-provider";
 const actionableDashboardLinks = [
   {
     name: "Overview",
-    href: "/v1/",
+    href: "/v1",
     Icon: OverviewIcon,
     shortcutText: keywordShortcuts.menu.overview.shortcut,
   },
@@ -77,7 +77,7 @@ const Sidebar = () => {
     menuShortcutList,
     (idx, handler) => {
       const keys = handler.keys?.join("");
-      if (keys === keywordShortcuts.menu.overview.shortcut) router.push("/v1/");
+      if (keys === keywordShortcuts.menu.overview.shortcut) router.push("/v1");
       if (keys === keywordShortcuts.menu.income.shortcut)
         router.push("/v1/income");
       if (keys === keywordShortcuts.menu.expenses.shortcut)
