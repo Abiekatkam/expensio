@@ -1,11 +1,11 @@
 "use client";
-import { applicationServerUrls } from "@/components/constant/urls";
 import CircleLoader from "@/components/loader/CircleLoader";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useState } from "react";
 
 const LoginForm = () => {
+  
   const [state, setState] = useState({
     loading: false,
     email: "",
