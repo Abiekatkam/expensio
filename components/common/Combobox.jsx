@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 
 export function Combobox({ data, selected, onChange }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = React.useState(selected);
+  const [value, setValue] = useState(selected);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -51,7 +51,7 @@ export function Combobox({ data, selected, onChange }) {
                   value={datum.label}
                   onSelect={(selectedLabel) => {
                     const { value: selectedValue } = data.find(
-                      (datum) => datum.label?.toLowerCase() === selectedLabel
+                      (datum) => datum.label?.toLowerCase() === selectedLabel.toLowerCase()
                     ) || { value };
                     setValue(selectedValue);
                     onChange(selectedValue);

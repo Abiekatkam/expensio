@@ -97,7 +97,7 @@ const Plans = () => {
         <CardContent className="p-4 pt-2">
           <div className="flex items-center text-lg">
             <span className="inline-flex text-3xl font-extrabold tabular-nums text-primary">
-              {formatCurrency({ value: 20, locale: "en", currency: "INR" })}
+              {formatCurrency({ value: 50, locale: "en", currency: "INR" })}
             </span>
             <span className="ml-[6px] text-base text-primary">per month</span>
           </div>

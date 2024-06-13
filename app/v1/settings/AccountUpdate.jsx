@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Combobox } from "@/components/common/Combobox";
 import { useUser } from "@/components/providers/auth-provider";
+import { settingUpdateUser } from "./apis";
 
 const currencyData = Object.keys(data)
   .map((key) => {
@@ -51,9 +52,8 @@ const AccountUpdate = () => {
               data={currencyData}
               selected={currency}
               onChange={async (value) => {
-                console.log(value);
-                // const [currency, locale] = value.split("-");
-                // await updateUser({ currency, locale });
+                const [currency, locale] = value.split("-");
+                await settingUpdateUser({ currency, locale });
               }}
             />
           </div>
