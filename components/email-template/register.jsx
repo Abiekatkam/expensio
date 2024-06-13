@@ -31,7 +31,7 @@ export const RegisterEmail = ({ action_link = "" }) => {
                 src={applicationClientUrls.social.appLogoUrl}
                 width="50"
                 height="50"
-                alt="Logo"
+                alt="expensio logo"
                 className="block m-auto"
               />
             </Section>

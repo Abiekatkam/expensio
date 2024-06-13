@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Combobox } from "@/components/common/Combobox";
+import { useUser } from "@/components/providers/auth-provider";
 
 const currencyData = Object.keys(data)
   .map((key) => {
@@ -20,8 +21,8 @@ const currencyData = Object.keys(data)
   .flat(Infinity);
 
 const AccountUpdate = () => {
-    // const currency = `${user.currency}-${user.locale}`;
-    const currency = "inr-en";
+  const user = useUser();
+  const currency = `${user.currency}-${user.locale}`.toLowerCase();
   return (
     <Card className="w-full dark:bg-[#09090a]">
       <CardHeader className="p-4 pb-2">
@@ -35,7 +36,12 @@ const AccountUpdate = () => {
             <Label className="mb-3 block" htmlFor="email">
               Email
             </Label>
-            <Input id="email" disabled defaultValue={"user.email"} className="h-8 italic dark:bg-[#09090a]" />
+            <Input
+              id="email"
+              disabled
+              defaultValue={user.email}
+              className="h-8 italic dark:bg-[#09090a]"
+            />
           </div>
           <div>
             <Label className="mb-3 block" htmlFor="currency">
