@@ -20,6 +20,8 @@ import {
   SupportIcon,
 } from "@/components/sidebar/sidebar-logo";
 import { useSidebar } from "@/components/providers/sidebar-provider";
+import Cookies from "js-cookie";
+import { cookieTokenName } from "@/components/constant/urls";
 
 const actionableDashboardLinks = [
   {
@@ -92,6 +94,12 @@ const Sidebar = () => {
     }
   );
 
+  async function handleLogout() {
+    Cookies.remove(cookieTokenName);
+		window.location.href = '/login';
+	}
+
+
   return (
     <>
       <div
@@ -151,7 +159,7 @@ const Sidebar = () => {
               })}
               <button
                 className={`mt-2 flex h-[40px] w-full items-center justify-center rounded-lg p-2 text-xl tracking-wide text-white hover:bg-[#27272a]`}
-                // onClick={signOut}
+                onClick={handleLogout}
               >
                 <div className="flex items-center">
                   <SignoutIcon className="text-white" />

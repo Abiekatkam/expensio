@@ -3,7 +3,7 @@ const isProduction = process.env.NODE_ENV === "production";
 export const cookieTokenName = "ExpensioCreds";
 export const usagePlan = {
   basicPlan: { limit: 100, name: "basic" },
-  premiumPlan: { limit: 2000, name: "premium" },
+  premiumPlan: { limit: 1000, name: "premium" },
 };
 
 const domain = "127.0.0.1:3000";
@@ -30,7 +30,7 @@ export const applicationClientUrls = {
     appName: "Expensio",
     developerName: "Abhishek Katkam",
     premiumPlan: {
-      usageLimit: 2000,
+      usageLimit: 1000,
     },
   },
   host: {
@@ -46,4 +46,7 @@ export const applicationServerUrls = {
   user: {
     modify: "/api/user",
   },
+  feedback: {
+		add: "/api/feedback",
+	},
 };

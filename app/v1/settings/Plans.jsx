@@ -1,8 +1,10 @@
 "use client";
+import { usagePlan } from "@/components/constant/urls";
+import { useUser } from "@/components/providers/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/formats";
-import React from "react";
+import React, { useState } from "react";
 
 const CheckIcon = () => (
 	<svg
@@ -22,16 +24,19 @@ const CheckIcon = () => (
 
 
 const Plans = () => {
+  const user = useUser();
+	const [loading, setLoading] = useState(false);
+	const { isPremium, isPremiumEnded } = user;
   return (
     <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:gap-10 md:mt-0 lg:grid-cols-2">
       <Card className="w-full dark:bg-[#09090a]">
         <CardHeader className="p-4 pb-2">
           <h2 className="relative inline-block font-semibold text-primary dark:text-white">
-            Basic {/* {!isPremium ? ( */}
+            Basic {!isPremium ? (
             <span className="absolute right-0 top-0 w-fit rounded-full bg-blue-700 px-2 text-xs font-normal leading-[1.6] text-white">
               Active
             </span>
-            {/* ) : null} */}
+            ) : null}
           </h2>
           <p className="text-sm text-muted-foreground">
             Free forever with limited features.
@@ -51,8 +56,7 @@ const Plans = () => {
             </span>
             <span className="mb-3 flex text-sm">
               <CheckIcon />
-              {/* Add up to {basicPlan.limit || 100} entries per account */}
-              Add up to 100 entries per account
+              Add up to {usagePlan.basicPlan.limit || 100} entries per account
             </span>
             <span className="mb-3 flex text-sm">
               <CheckIcon />
@@ -72,8 +76,7 @@ const Plans = () => {
             className="mb-3 mt-3 w-full text-sm"
             size={"sm"}
           >
-            {/* {!isPremium ? "Current plan" : "Expired"} */}
-            Current plan
+            {!isPremium ? "Current plan" : "Expired"}
           </Button>
         </CardContent>
       </Card>
@@ -81,11 +84,11 @@ const Plans = () => {
         <CardHeader className="p-4 pb-2">
           <h2 className="relative inline-block font-semibold text-primary dark:text-white">
             Premium{" "}
-            {/* {isPremium ? ( */}
+            {isPremium ? (
               <span className="absolute right-0 top-0 w-fit rounded-full bg-blue-700 px-2 text-xs font-normal leading-[1.6] text-white">
                 Active
               </span>
-            {/* ) : null} */}
+             ) : null}
           </h2>
           <p className="text-sm text-muted-foreground">
             Access to all premium features.
@@ -105,8 +108,7 @@ const Plans = () => {
             </span>
             <span className="mb-3 flex text-sm">
               <CheckIcon />
-              {/* Add up to {premiumPlan.limit || 1000} entries per account */}
-              Add up to 1000 entries per account
+              Add up to {usagePlan.premiumPlan.limit || 1000} entries per account
             </span>
             <span className="mb-3 flex text-sm">
               <CheckIcon />
@@ -129,12 +131,11 @@ const Plans = () => {
             //     setTimeout(() => setLoading(false));
             //   }
             // }}
-            // disabled={(isPremium && !isPremiumEnded) || loading}
+            disabled={(isPremium && !isPremiumEnded) || loading}
             className="mb-3 mt-3 w-full text-sm"
             size={"sm"}
           >
-            {/* {isPremium ? "Current plan" : "Go premium"} */}
-            Go premium
+            {isPremium ? "Current plan" : "Go premium"}
           </Button>
         </CardContent>
       </Card>
