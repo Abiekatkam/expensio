@@ -12,6 +12,7 @@ import { PlusIcon } from "lucide-react";
 import { keywordShortcuts } from "@/components/constant/keyword-shortcuts";
 import AddIncomeModal from "@/components/modal/AddIncomeModal";
 import AddInvestmentModal from "@/components/modal/AddInvestmentModal";
+import AddSubscriptionsModal from "../modal/AddSubscriptionsModal";
 
 const openShortcutKey = Object.values(keywordShortcuts.modal.open.shortcut);
 
@@ -94,8 +95,8 @@ export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
           }}
         />
       ) : null}
-      {/* {type === "subscriptions" ? (
-        <AddSubscriptions
+      {type === "subscriptions" ? (
+        <AddSubscriptionsModal
           lookup={(value) => {
             if (onLookup) return onLookup(value);
           }}
@@ -107,7 +108,7 @@ export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
             setShow(false);
           }}
         />
-      ) : null} */}
+      ) : null}
     </>
   );
 }

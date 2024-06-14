@@ -63,6 +63,11 @@ export const applicationServerUrls = {
     modify: "/api/investments",
     getInvestments: ({ from, to }) => `/api/investments?from=${from}&to=${to}`,
   },
+  subscriptions: {
+		add: '/api/subscriptions/add',
+		modify: '/api/subscriptions',
+		getSubscriptions: ({ from, to }) => `/api/subscriptions?from=${from}&to=${to}`,
+	},
 };
 
 export const getApiUrl = (
