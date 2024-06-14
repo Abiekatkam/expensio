@@ -47,17 +47,22 @@ export const applicationServerUrls = {
   },
   user: {
     modify: "/api/user",
-    usage: 'api/user/usage',
-    upgrade: '/api/user/upgrade',
+    usage: "api/user/usage",
+    upgrade: "/api/user/upgrade",
   },
   feedback: {
     add: "/api/feedback",
   },
   income: {
-    add: '/api/income/add',
-		modify: '/api/income',
-		getIncome: ({ from, to }) => `/api/income?from=${from}&to=${to}`,
-  }
+    add: "/api/income/add",
+    modify: "/api/income",
+    getIncome: ({ from, to }) => `/api/income?from=${from}&to=${to}`,
+  },
+  investments: {
+    add: "/api/investments/add",
+    modify: "/api/investments",
+    getInvestments: ({ from, to }) => `/api/investments?from=${from}&to=${to}`,
+  },
 };
 
 export const getApiUrl = (
@@ -81,24 +86,24 @@ export const getApiUrl = (
 };
 
 export const views = {
-	all: {
-		name: 'All',
-		key: 'all',
-	},
-	thisWeek: {
-		name: 'This Week',
-		key: 'thisWeek',
-	},
-	thisMonth: {
-		name: 'This Month',
-		key: 'thisMonth',
-	},
-	pastWeek: {
-		name: 'Past Week',
-		key: 'pastWeek',
-	},
-	pastMonth: {
-		name: 'Past Month',
-		key: 'pastMonth',
-	},
+  all: {
+    name: "All",
+    key: "all",
+  },
+  thisWeek: {
+    name: "This Week",
+    key: "thisWeek",
+  },
+  thisMonth: {
+    name: "This Month",
+    key: "thisMonth",
+  },
+  pastWeek: {
+    name: "Past Week",
+    key: "pastWeek",
+  },
+  pastMonth: {
+    name: "Past Month",
+    key: "pastMonth",
+  },
 };
