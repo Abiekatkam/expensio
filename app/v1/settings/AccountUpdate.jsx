@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Combobox } from "@/components/common/Combobox";
 import { useUser } from "@/components/providers/auth-provider";
 import { settingUpdateUser } from "./apis";
+import { useRouter } from "next/navigation";
 
 const currencyData = Object.keys(data)
   .map((key) => {
@@ -22,6 +23,7 @@ const currencyData = Object.keys(data)
   .flat(Infinity);
 
 const AccountUpdate = () => {
+  const router = useRouter();
   const user = useUser();
   const currency = `${user.currency}-${user.locale}`.toLowerCase();
   return (
@@ -54,6 +56,7 @@ const AccountUpdate = () => {
               onChange={async (value) => {
                 const [currency, locale] = value.split("-");
                 await settingUpdateUser({ currency, locale });
+                router.push("/v1/settings");
               }}
             />
           </div>

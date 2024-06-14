@@ -7,8 +7,7 @@ import {
   subWeeks,
 } from "date-fns";
 import { format } from "date-fns";
-
-// import { views } from './table';
+import { views } from "./urls";
 
 export const dateFormat = "yyyy-MM-dd";
 export const datePattern = "d{2}-d{2}-d{4}";

@@ -1,3 +1,5 @@
+import { getRangeDateForFilter } from "./date-time";
+
 const isProduction = process.env.NODE_ENV === "production";
 
 export const cookieTokenName = "ExpensioCreds";
@@ -45,8 +47,58 @@ export const applicationServerUrls = {
   },
   user: {
     modify: "/api/user",
+    usage: 'api/user/usage',
+    upgrade: '/api/user/upgrade',
   },
   feedback: {
-		add: "/api/feedback",
+    add: "/api/feedback",
+  },
+  income: {
+    add: '/api/income/add',
+		modify: '/api/income',
+		getIncome: ({ from, to }) => `/api/income?from=${from}&to=${to}`,
+  }
+};
+
+export const getApiUrl = (
+  filterKey,
+  apiPath,
+  categories,
+  isNotRange = false
+) => {
+  if (isNotRange) {
+    return `/api/${apiPath}`;
+  }
+
+  if (filterKey === views.all.key) {
+    return `/api/${apiPath}?categories=${categories?.join(",")}`;
+  }
+
+  const [start, end] = getRangeDateForFilter(filterKey);
+  return `/api/${apiPath}?from=${start}&to=${end}&categories=${categories?.join(
+    ","
+  )}`;
+};
+
+export const views = {
+	all: {
+		name: 'All',
+		key: 'all',
+	},
+	thisWeek: {
+		name: 'This Week',
+		key: 'thisWeek',
+	},
+	thisMonth: {
+		name: 'This Month',
+		key: 'thisMonth',
+	},
+	pastWeek: {
+		name: 'Past Week',
+		key: 'pastWeek',
+	},
+	pastMonth: {
+		name: 'Past Month',
+		key: 'pastMonth',
 	},
 };
