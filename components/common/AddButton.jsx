@@ -12,7 +12,8 @@ import { PlusIcon } from "lucide-react";
 import { keywordShortcuts } from "@/components/constant/keyword-shortcuts";
 import AddIncomeModal from "@/components/modal/AddIncomeModal";
 import AddInvestmentModal from "@/components/modal/AddInvestmentModal";
-import AddSubscriptionsModal from "../modal/AddSubscriptionsModal";
+import AddSubscriptionsModal from "@/components/modal/AddSubscriptionsModal";
+import AddExpenseModal from "@/components/modal/AddExpenseModal";
 
 const openShortcutKey = Object.values(keywordShortcuts.modal.open.shortcut);
 
@@ -53,8 +54,8 @@ export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
         </Tooltip>
       </TooltipProvider>
 
-      {/* {type === "expenses" ? (
-        <AddExpense
+      {type === "expenses" ? (
+        <AddExpenseModal
           lookup={(value) => {
             if (onLookup) return onLookup(value);
           }}
@@ -66,7 +67,7 @@ export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
             setShow(false);
           }}
         />
-      ) : null} */}
+      ) : null}
       {type === "income" ? (
         <AddIncomeModal
           lookup={(value) => {
