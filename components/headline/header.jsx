@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { HamburgerIcon } from "@/components/sidebar/sidebar-logo";
 import { useSidebar } from "@/components/providers/sidebar-provider";
 import Feedback from "@/components/common/Feedback";
+import DatePicker from "@/components/common/DatePicker";
 
 const Header = ({ title, showDatePicker = false }) => {
   const { showMenu, setShowMenu } = useSidebar();
@@ -34,8 +35,7 @@ const Header = ({ title, showDatePicker = false }) => {
         <div className="flex items-center justify-between sm:mt-0">
           {showDatePicker ? (
             <div className="date-picker mr-0 flex w-full items-center sm:mr-4 max-sm:mt-1">
-              {/* <span className="mr-2 hidden text-xs font-semibold uppercase md:inline-block">Showing:</span> */}
-              {/* <DatePicker /> */}
+              <DatePicker />
             </div>
           ) : null}
           <Feedback
