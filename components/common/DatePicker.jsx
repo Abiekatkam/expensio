@@ -38,7 +38,7 @@ function DatePickerWithRange({ className, date, onChange }) {
             id="date"
             variant={"outline"}
             className={cn(
-              "mr-[1px] h-[32px] w-[200px] justify-start rounded-br-none rounded-tr-none border-r !border-border border-gray-100 p-2 text-left font-normal hover:bg-accent focus:bg-accent focus-visible:!ring-1 focus-visible:!ring-gray-400 dark:bg-muted dark:hover:opacity-[0.8] sm:min-w-[235px]",
+              "mr-[1px] h-[32px] w-[200px] justify-start rounded-br-none rounded-tr-none border-r dark:bg-[#09090a] !border-border border-gray-100 p-2 text-left font-normal hover:bg-accent focus:bg-accent focus-visible:!ring-1 focus-visible:!ring-gray-400  dark:hover:opacity-[0.8] sm:min-w-[235px]",
               !date && "text-muted-foreground"
             )}
           >
@@ -121,13 +121,16 @@ function DatePickerSelect({ onChange, selectedValue }) {
         }
       }}
     >
-      <SelectTrigger className="h-[32px] w-full min-w-[100px] rounded-bl-none rounded-tl-none !border-border p-2 hover:bg-accent focus:ring-0 focus-visible:!ring-1 focus-visible:!ring-gray-400 dark:bg-muted dark:hover:opacity-[0.8]">
+      <SelectTrigger className="h-[32px] w-full min-w-[100px] rounded-bl-none rounded-tl-none dark:bg-[#09090a] !border-border p-2 hover:bg-accent focus:ring-0 focus-visible:!ring-1 focus-visible:!ring-gray-400 dark:hover:opacity-[0.8]">
         <SelectValue
           className="overflow-hidden text-ellipsis whitespace-nowrap"
           placeholder="Select"
         />
       </SelectTrigger>
-      <SelectContent className="!border-border" position="popper">
+      <SelectContent
+        className="!border-border dark:bg-[#09090a]"
+        position="popper"
+      >
         <SelectItem value="none">Select</SelectItem>
         <SelectItem value="tdy">Today</SelectItem>
         <SelectItem value="7days">Last 7 days</SelectItem>

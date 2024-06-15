@@ -1,4 +1,7 @@
-import { applicationClientUrls, applicationServerUrls } from "@/components/constant/urls";
+import {
+  applicationClientUrls,
+  applicationServerUrls,
+} from "@/components/constant/urls";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { SidebarContextProvider } from "@/components/providers/sidebar-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -14,20 +17,23 @@ export const metadata = {
 };
 
 async function getUser(cookies) {
-	const res = await fetch(`${applicationClientUrls.host.home}/${applicationServerUrls.user.modify}`, {
-		headers: { cookie: cookies },
-	});
-	if (!res.ok) {
-		return {};
-	}
-	return await res.json();
+  const res = await fetch(
+    `${applicationClientUrls.host.home}/${applicationServerUrls.user.modify}`,
+    {
+      headers: { cookie: cookies },
+    }
+  );
+  if (!res.ok) {
+    return {};
+  }
+  return await res.json();
 }
 
 export default async function HomeLayout({ children }) {
   const user = await getUser(cookies());
   return (
     <>
-      <div className="flex h-full flex-col text-gray-600 antialiased">
+      <div className="flex h-full dark:bg-[#09090a] flex-col text-gray-600 antialiased">
         <NextTopLoader color="#7c3aed" height={2} showSpinner={false} />
         <AuthProvider user={user}>
           <ThemeProvider

@@ -1,53 +1,17 @@
 "use client";
 
-import { formatCurrency } from "@/lib/formats";
 import { useMemo } from "react";
 import { useUser } from "../providers/auth-provider";
 import { useOverview } from "../providers/overview-provider";
-import {
-  extractChartAxis,
-  extractExpenses,
-  extractExpensesCategory,
-} from "@/lib/extraction";
+import { extractExpenses, extractExpensesCategory } from "@/lib/extraction";
 import { ResponsiveBar } from "@nivo/bar";
-
-// import { BarChart } from '@tremor/react';
-
-// import ChartLoader from 'components/loader/chart';
-
-const dataFormatter = (number) => {
-  return "$ " + Intl.NumberFormat("us").format(number).toString();
-};
-
-const customTooltip = ({ payload, active, user }) => {
-  if (!active || !payload) return null;
-  return (
-    <div className="w-56 rounded-tremor-default text-tremor-default bg-tremor-background p-2 shadow-tremor-dropdown border border-tremor-border">
-      {payload.map((category, idx) => (
-        <div className={`flex items-center justify-between`} key={idx}>
-          <div className="flex items-center">
-            <span
-              className={`bg-${category.color}-500 p-0.5 rounded-full inline-block w-2 h-2`}
-            ></span>
-            <span className="text-black ml-2 capitalize ">
-              {category.dataKey}
-            </span>
-          </div>
-          <span className="text-black flex ml-2">
-            {formatCurrency({
-              value: category.value,
-              currency: user.currency,
-              locale: user.locale,
-            })}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-};
+import ChartLoader from "@/components/loader/ChartLoader";
+import { useTheme } from "next-themes";
+import { chartThemeConfig } from "@/lib/formats";
 
 export default function ExpesenseChart() {
   const user = useUser();
+  const { theme } = useTheme();
   const { data, loading } = useOverview();
   const chartData = useMemo(
     () => extractExpenses(data.expenses, user.locale),
@@ -57,14 +21,10 @@ export default function ExpesenseChart() {
     () => extractExpensesCategory(data.expenses),
     [data.expenses]
   );
-  const [maxXAxisValue] = useMemo(
-    () => extractChartAxis(data.expenses),
-    [data.expenses]
-  );
 
-  // if (loading) {
-  // 	return <ChartLoader className="h-[340px]" type="bar" />;
-  // }
+  if (loading) {
+    return <ChartLoader className="h-[340px]" type="bar" />;
+  }
 
   if (!chartData.length) {
     return (
@@ -72,49 +32,49 @@ export default function ExpesenseChart() {
     );
   }
 
-  console.log(chartData);
-  console.log(categoriesData);
-
   return (
     <div style={{ height: "400px" }}>
-      {/* <ResponsiveBar
+      <ResponsiveBar
         data={chartData}
         keys={categoriesData}
         indexBy="date"
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-        padding={0.3}
-        groupMode="grouped"
+        margin={{ top: 10, right: 130, bottom: 50, left: 60 }}
+        padding={0.4}
+        innerPadding={3}
+        groupMode="stacked"
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
         colors={{ scheme: "nivo" }}
-        tooltip={(data) =>
-          customTooltip({
-            ...data,
-            data: { currency: user.currency, locale: user.locale },
-          })
-        }
+        borderColor={{
+          from: "color",
+          modifiers: [["darker", 1.6]],
+        }}
         axisTop={null}
         axisRight={null}
         axisBottom={{
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Date",
+          legend: "Expense Date",
           legendPosition: "middle",
           legendOffset: 32,
+          truncateTickAt: 0,
         }}
         axisLeft={{
           tickSize: 5,
-          tickPadding: 5,
+          tickPadding: -3,
           tickRotation: 0,
-          legend: "Expenses",
+          legend: "Expense Amount",
           legendPosition: "middle",
-          legendOffset: -80,
-          format: dataFormatter,
+          legendOffset: -40,
+          truncateTickAt: 0,
         }}
         labelSkipWidth={12}
         labelSkipHeight={12}
-        labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+        labelTextColor={{
+          from: "color",
+          modifiers: [["darker", 1.6]],
+        }}
         legends={[
           {
             dataFrom: "keys",
@@ -139,10 +99,12 @@ export default function ExpesenseChart() {
             ],
           },
         ]}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-      /> */}
+        theme={theme !== "light" && chartThemeConfig}
+        role="application"
+        barAriaLabel={(e) =>
+          e.id + ": " + e.formattedValue + " in country: " + e.indexValue
+        }
+      />
     </div>
   );
 }

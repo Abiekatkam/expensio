@@ -37,7 +37,7 @@ export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
         <Tooltip>
           <TooltipTrigger asChild>
             <button
-              className="z-100 fixed bottom-[20px] right-[20px] flex h-[56px] w-[56px] items-center justify-between rounded-full bg-[#09090a] p-[12px] text-sm font-medium uppercase text-white shadow-lg hover:opacity-90 dark:bg-white dark:text-[#09090a] sm:h-[48px] sm:w-[48px]"
+              className="z-100 fixed bottom-[20px] right-[20px] flex h-[66px] w-[66px] items-center justify-between rounded-full bg-[#09090a] p-[12px] text-sm font-medium uppercase text-white shadow-lg hover:opacity-90 dark:bg-white dark:text-[#09090a] sm:h-[48px] sm:w-[48px]"
               onClick={() => {
                 setShow(!show);
               }}

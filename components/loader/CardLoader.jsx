@@ -9,7 +9,7 @@ export default function CardLoader({ cards = 1, className = "" }) {
       {Array(cards)
         .fill(0)
         .map((card, index) => (
-          <Card key={`${card}-${index}`}>
+          <Card key={`${card}-${index}`} className="dark:bg-[#09090a]">
             <CardHeader className="pb-0">
               <CardTitle>
                 <Skeleton className="h-4 rounded-sm" />
