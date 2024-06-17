@@ -43,7 +43,7 @@ export default function OverviewCharts() {
           </CardContent>
         </Card>
       </div>
-      {/* {user.isPremium ? ( */}
+      {user.isPremium ? (
       <>
         <div className="mb-8 flex md:min-h-full w-full flex-col md:mb-0 md:mt-0">
           <Card className="h-full w-full dark:bg-[#09090a]">
@@ -67,7 +67,7 @@ export default function OverviewCharts() {
           </Card>
         </div>
       </>
-      {/* ) : null} */}
+      ) : null}
     </>
   );
 }

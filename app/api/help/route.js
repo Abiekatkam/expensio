@@ -1,27 +1,23 @@
 import { emails } from "@/components/constant/messages";
-import FeedbackEmail from "@/components/email-template/feedback";
+import HelpCenterEmail from "@/components/email-template/helpcenter";
 import { checkAuthorisation } from "@/lib/authorisation";
 import { nodemailerTransporter } from "@/lib/nodemailer";
-import prismaClient from "@/lib/prisma";
 import { render } from "@react-email/render";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const { message } = await request.json();
+  const { message, isPremiumUser } = await request.json();
   return await checkAuthorisation(async (user) => {
     try {
-      await prismaClient.feedbacks.create({
-        data: { message, user_id: user.id },
-      });
-      const feedbackEmailHtml = render(
-        <FeedbackEmail message={message} email={user?.email} />
+      const helpcenterEmailHtml = render(
+        <HelpCenterEmail message={message} email={user?.email} />
       );
 
       let nodemailerConfig = {
         from: emails.from,
         to: emails.email,
-        subject: emails.feedback.subject,
-        html: feedbackEmailHtml,
+        subject: isPremiumUser ? emails.helpCenter.premiumUserSubject : emails.helpCenter.userSubject,
+        html: helpcenterEmailHtml,
       };
 
       await nodemailerTransporter.sendMail(nodemailerConfig);

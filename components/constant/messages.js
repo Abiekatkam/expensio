@@ -29,10 +29,16 @@ const messages = {
 };
 
 export const emails = {
-  email: "abiekatkamproject@gmail.com",
+  email: "abhishekkatkam30@gmail.com",
   feedback: {
     subject: "🎉 New Feedback Received",
     sent: "Feedback received.",
+    failed: "Failed to send, please try again.",
+  },
+  helpCenter: {
+    premiumUserSubject: "Need Premium Support 🆘",
+    userSubject: "Need Support 🆘",
+    sent: "Support is coming your way.",
     failed: "Failed to send, please try again.",
   },
   account: {
@@ -56,7 +62,7 @@ export const emails = {
     },
   },
   sent: "We just sent an email with magic link, check your inbox.",
-  from: "Abhishek from Expensio, <abiekatkamproject@gmail.com>",
+  from: "Abhishek from Expensio, <abhishekkatkam30@gmail.com>",
   login: { subject: "Login link for Expensio" },
   register: { subject: "Register link for Expensio" },
 };

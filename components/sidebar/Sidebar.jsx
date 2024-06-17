@@ -57,11 +57,6 @@ const actionableDashboardLinks = [
 ];
 
 const nonActionableDashboardLinks = [
-  {
-    href: "mailto:abiekatkamproject@gmail.com",
-    name: "Support",
-    Icon: SupportIcon,
-  },
   { href: "/v1/settings", name: "Settings", Icon: SettingsIcon },
 ];
 

@@ -53,6 +53,9 @@ export const applicationServerUrls = {
   feedback: {
     add: "/api/feedback",
   },
+  helpCenter: {
+    add: "/api/help",
+  },
   income: {
     add: "/api/income/add",
     modify: "/api/income",
@@ -64,15 +67,16 @@ export const applicationServerUrls = {
     getInvestments: ({ from, to }) => `/api/investments?from=${from}&to=${to}`,
   },
   subscriptions: {
-		add: '/api/subscriptions/add',
-		modify: '/api/subscriptions',
-		getSubscriptions: ({ from, to }) => `/api/subscriptions?from=${from}&to=${to}`,
-	},
+    add: "/api/subscriptions/add",
+    modify: "/api/subscriptions",
+    getSubscriptions: ({ from, to }) =>
+      `/api/subscriptions?from=${from}&to=${to}`,
+  },
   expenses: {
-		add: '/api/expenses/add',
-		modify: '/api/expenses',
-		getExpenses: ({ from, to }) => `/api/expenses?from=${from}&to=${to}`,
-	},
+    add: "/api/expenses/add",
+    modify: "/api/expenses",
+    getExpenses: ({ from, to }) => `/api/expenses?from=${from}&to=${to}`,
+  },
 };
 
 export const getApiUrl = (
