@@ -15,6 +15,8 @@ import {
 } from "@react-email/components";
 
 import { applicationClientUrls } from "@/components/constant/urls";
+import Footnote from "./footnote";
+import Footer from "./footer";
 
 const settingUrl = applicationClientUrls.host.home + "/v1/settings";
 

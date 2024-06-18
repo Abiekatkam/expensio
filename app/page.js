@@ -70,9 +70,9 @@ const Home = () => {
                 <p className="mb-2 mt-2 text-[#13131A]">
                   Free forever with limits.
                 </p>
-                <p className="mt-4">
-                  <span className="text-3xl font-extrabold">0</span>
-                  <span className="text-base  text-[#13131A]"> / month</span>
+                <p className="mt-4 flex  items-center">
+                  <span className="text-3xl font-extrabold flex items-center"><FaIndianRupeeSign /> {" "} 0</span>
+                  {" "}<span className="text-base  text-[#13131A]"> / month</span>
                 </p>
                 <div className="mb-0 ml-1 mt-4 flex flex-col justify-center text-left ">
                   <span className="m-1 ml-0 flex items-center  text-[15px]">
@@ -110,11 +110,9 @@ const Home = () => {
                 <p className="mb-2 mt-2 text-[#13131A]">
                   Access to all premium features.
                 </p>
-                <p className="mt-4">
-                  <span className="inline-flex text-3xl font-extrabold">
-                    50
-                  </span>
-                  <span className="text-base text-[#13131A]"> / month</span>
+                <p className="mt-4 flex  items-center">
+                  <span className="text-3xl font-extrabold flex items-center"><FaIndianRupeeSign /> {" "} 50</span>
+                  {" "}<span className="text-base  text-[#13131A]"> / month</span>
                 </p>
                 <div className="mb-0 ml-1 mt-4 flex flex-col justify-center text-left ">
                   <span className="m-1 ml-0 flex items-center  text-[15px]">

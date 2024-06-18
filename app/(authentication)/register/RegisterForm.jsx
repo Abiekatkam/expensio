@@ -92,7 +92,7 @@ const RegisterForm = () => {
       >
         {state.success && !state.error ? (
           <span className="text-green-700 bg-green-100 p-2 rounded-md">
-            We just sent an email with magic link, check your inbox.
+            We just sent an email with magic link{","} check your inbox.
           </span>
         ) : null}
 
