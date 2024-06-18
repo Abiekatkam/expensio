@@ -5,7 +5,6 @@ import Appearance from "./Appearance";
 import Usage from "./Usage";
 import Plans from "./Plans";
 import AccountDelete from "./AccountDelete";
-import { BankAccountDetail } from "./BankAccountDetail";
 import { HelpCenter } from "./HelpCenter";
 
 const SettingPage = () => {
@@ -17,7 +16,6 @@ const SettingPage = () => {
           <AccountUpdate />
           <Appearance />
           <Usage />
-          <BankAccountDetail/>
           <Plans />
           <HelpCenter/>
           <AccountDelete />

@@ -51,16 +51,16 @@ export const LoginEmail = ({ action_link = "" }) => {
             >
               Login
             </Link>
-            {/* <Text className="text-black text-[14px] mt-[16px] mb-[10px] leading-[24px]">
+            <Text className="text-black text-[14px] mt-[16px] mb-[10px] leading-[24px]">
 							or if you are on mobile, copy and paste this URL into your browser:{' '}
 							<Row>
 								<Link className="text-[#cc35e5] break-all text-sm flex w-[465px] leading-[24px]">
 									{action_link.replace(/^https?:\/\//, '')}
 								</Link>
 							</Row>
-						</Text> */}
+						</Text>
             <Text className="text-gray-500 mt-[16px]">
-              If you didn{"'"}t try to Sign in, you can safely ignore this
+              If you didn{"'"}t try to Login, you can safely ignore this
               email.
             </Text>
             <Footnote hideNote={true} />

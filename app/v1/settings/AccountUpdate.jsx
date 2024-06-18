@@ -37,7 +37,7 @@ const AccountUpdate = () => {
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <Label className="mb-3 block" htmlFor="email">
-              Email
+              Email Address
             </Label>
             <Input
               id="email"
@@ -48,7 +48,7 @@ const AccountUpdate = () => {
           </div>
           <div>
             <Label className="mb-3 block" htmlFor="currency">
-              Currency
+              Change Currency
             </Label>
             <Combobox
               data={currencyData}
