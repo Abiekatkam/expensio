@@ -1,4 +1,5 @@
 import messages, { emails } from "@/components/constant/messages";
+import { applicationClientUrls } from "@/components/constant/urls";
 import LoginEmail from "@/components/email-template/login";
 import { generateToken } from "@/lib/jwt";
 import { nodemailerTransporter } from "@/lib/nodemailer";
@@ -18,7 +19,10 @@ export async function POST(request) {
       const token = generateToken({ email }, "10m");
       let nodemailerConfig = "";
 
-      const action_link = `http://${process.env.NEXT_PUBLIC_SITE_URL}/api/auth?token=${token}&type=login`;
+      const action_link =
+        process.env.NODE_ENV === "production"
+          ? `${applicationClientUrls.host.home}/api/auth?token=${token}&type=login`
+          : `http://${process.env.NEXT_PUBLIC_SITE_URL}/api/auth?token=${token}&type=login`;
 
       const loginEmailHtml = render(<LoginEmail action_link={action_link} />);
 

@@ -8,7 +8,7 @@ export const usagePlan = {
   premiumPlan: { limit: 1000, name: "premium" },
 };
 
-const domain = "127.0.0.1:3000";
+const domain = "expensio-ten.vercel.app";
 const local = "localhost:3000";
 const home = isProduction ? domain : local;
 

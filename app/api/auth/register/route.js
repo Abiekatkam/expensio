@@ -6,6 +6,7 @@ import WelcomeEmail from "@/components/email-template/welcome";
 import { render } from "@react-email/render";
 import RegisterEmail from "@/components/email-template/register";
 import { nodemailerTransporter } from "@/lib/nodemailer";
+import { applicationClientUrls } from "@/components/constant/urls";
 
 export async function POST(request) {
   const { email } = await request.json();
@@ -18,7 +19,9 @@ export async function POST(request) {
       const token = generateToken({ email }, "10m");
       let nodemailerConfig = "";
 
-      const action_link = `http://${process.env.NEXT_PUBLIC_SITE_URL}/api/auth?token=${token}&type=register`;
+      const action_link = process.env.NODE_ENV === "production"
+      ? `${applicationClientUrls.host.home}/api/auth?token=${token}&type=register`
+      : `http://${process.env.NEXT_PUBLIC_SITE_URL}/api/auth?token=${token}&type=register`;
 
       const welcomeEmailHtml = render(<WelcomeEmail />);
       const registerEmailHtml = render(
