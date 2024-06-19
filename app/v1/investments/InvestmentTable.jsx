@@ -50,22 +50,48 @@ export default function InvestmentsTable() {
 
   return (
     <>
-      <DataTable
-        options={{ user, onDelete, onEdit }}
-        filter={filter}
-        columns={InvestmentColumn}
-        data={data}
-        loading={loading}
-        filename="Investments"
-        categories={categories}
-      />
-      <Add
-        onHide={onHide}
-        onLookup={onLookup}
-        selected={selected}
-        mutate={mutate}
-        type="investments"
-      />
+      {data.length > 0 ? (
+        <>
+          <DataTable
+            options={{ user, onDelete, onEdit }}
+            filter={filter}
+            columns={InvestmentColumn}
+            data={data}
+            loading={loading}
+            filename="Investments"
+            categories={categories}
+          />
+          <Add
+            onHide={onHide}
+            onLookup={onLookup}
+            selected={selected}
+            mutate={mutate}
+            type="investments"
+          />
+        </>
+      ) : (
+        <div className="sm:w-[650px] sm:text-start text-center sm:ml-5">
+          <p className="text-balance">
+            Welcome to Expensio! To ensure a comprehensive and effective
+            management of your finances, we highly recommend adding your
+            investments. Keeping track of your investments allows you to have a
+            clearer picture of your overall financial health. If you haven't
+            added any investments yet, now is a great time to start! Simply
+            click the "Add Investments" button to input your investment details. This
+            small step will go a long way in helping you manage your expenses
+            more efficiently and make informed financial decisions. Happy
+            managing!
+          </p>
+          <Add
+            onHide={onHide}
+            onLookup={onLookup}
+            selected={selected}
+            mutate={mutate}
+            type="investments"
+            isBtnIcon={true}
+          />
+        </div>
+      )}
     </>
   );
 }

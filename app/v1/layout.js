@@ -33,12 +33,12 @@ export default async function HomeLayout({ children }) {
   const user = await getUser(cookies());
   return (
     <>
-      <div className="flex h-full dark:bg-[#09090a] flex-col text-gray-600 antialiased">
+      <div className="flex h-full dark:bg-[#09090a] flex-col text-gray-600 dark:text-gray-300 antialiased">
         <NextTopLoader color="#7c3aed" height={2} showSpinner={false} />
         <AuthProvider user={user}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >

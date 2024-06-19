@@ -50,22 +50,46 @@ export default function ExpenseTable() {
 
   return (
     <>
-      <DataTable
-        options={{ user, onDelete, onEdit }}
-        filter={filter}
-        columns={ExpensesColumn}
-        data={data}
-        loading={loading}
-        filename="Expenses"
-        categories={categories}
-      />
-      <Add
-        onHide={onHide}
-        onLookup={onLookup}
-        selected={selected}
-        mutate={mutate}
-        type="expenses"
-      />
+      {data.length > 0 ? (
+        <>
+          <DataTable
+            options={{ user, onDelete, onEdit }}
+            filter={filter}
+            columns={ExpensesColumn}
+            data={data}
+            loading={loading}
+            filename="Expenses"
+            categories={categories}
+          />
+          <Add
+            onHide={onHide}
+            onLookup={onLookup}
+            selected={selected}
+            mutate={mutate}
+            type="expenses"
+          />
+        </>
+      ) : (
+        <div className="sm:w-[650px] sm:text-start text-center sm:ml-5">
+          <p className="text-balance">
+            In the Expensio app, managing your expenses is key to maintaining a
+            healthy financial life. If you haven't added any expenses yet, we
+            encourage you to start by clicking the "Add Expenses" button. This
+            simple step will help you better manage and track your finances,
+            giving you a clearer picture of where your money goes. Don't wait {" – "}
+            add your expenses now for better financial management and peace of
+            mind.
+          </p>
+          <Add
+            onHide={onHide}
+            onLookup={onLookup}
+            selected={selected}
+            mutate={mutate}
+            type="expenses"
+            isBtnIcon={true}
+          />
+        </div>
+      )}
     </>
   );
 }

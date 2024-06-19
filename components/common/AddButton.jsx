@@ -14,6 +14,7 @@ import AddIncomeModal from "@/components/modal/AddIncomeModal";
 import AddInvestmentModal from "@/components/modal/AddInvestmentModal";
 import AddSubscriptionsModal from "@/components/modal/AddSubscriptionsModal";
 import AddExpenseModal from "@/components/modal/AddExpenseModal";
+import { Button } from "../ui/button";
 
 const openShortcutKey = Object.values(keywordShortcuts.modal.open.shortcut);
 
@@ -21,7 +22,14 @@ const options = {
   keyup: true,
 };
 
-export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
+export default function Add({
+  mutate,
+  type,
+  selected = {},
+  onHide,
+  onLookup,
+  isBtnIcon = false,
+}) {
   const [show, setShow] = useState(false);
   useHotkeys(openShortcutKey, () => setShow(true), options);
 
@@ -36,14 +44,25 @@ export default function Add({ mutate, type, selected = {}, onHide, onLookup }) {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <button
-              className="z-100 fixed bottom-[20px] right-[20px] flex h-[66px] w-[66px] items-center justify-between rounded-full bg-[#09090a] p-[12px] text-sm font-medium uppercase text-white shadow-lg hover:opacity-90 dark:bg-white dark:text-[#09090a] sm:h-[48px] sm:w-[48px]"
+            {isBtnIcon ? (
+              <Button
+              className="flex items-center mx-auto sm:mx-0 justify-between text-sm bg-[#09090a] dark:bg-white font-medium capitalize mt-3 h-8"
               onClick={() => {
                 setShow(!show);
               }}
             >
-              <PlusIcon className="h-12 w-12" />
-            </button>
+              Add {type}
+            </Button>
+            ) : (
+              <button
+                className="z-100 fixed bottom-[20px] right-[20px] flex h-[66px] w-[66px] items-center justify-between rounded-full bg-[#09090a] p-[12px] text-sm font-medium uppercase text-white shadow-lg hover:opacity-90 dark:bg-white dark:text-[#09090a] sm:h-[48px] sm:w-[48px]"
+                onClick={() => {
+                  setShow(!show);
+                }}
+              >
+                <PlusIcon className="h-12 w-12" />
+              </button>
+            )}
           </TooltipTrigger>
           <TooltipContent className="mb-1 mr-1" hideWhenDetached side="top">
             {keywordShortcuts.modal.open.text}

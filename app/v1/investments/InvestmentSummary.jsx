@@ -12,26 +12,31 @@ export default function InvestmentSummary() {
 
   return (
     <>
-      <h2 className="mb-4 font-semibold text-primary dark:text-white">
-        Summary
-      </h2>
-      {loading ? (
-        <CardLoader cards={2} className="mb-6" />
-      ) : (
-        <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5">
-          <SummaryCard title="total investments" data={data.length} />
-          <SummaryCard
-            title="total amount"
-            data={formatCurrency({
-              value: data.reduce(
-                (acc, datum) => Number(datum.price) * Number(datum.units) + acc,
-                0
-              ),
-              currency: user?.currency,
-              locale: user?.locale,
-            })}
-          />
-        </div>
+      {data.length > 0 && (
+        <>
+          <h2 className="mb-4 font-semibold text-primary dark:text-white">
+            Summary
+          </h2>
+          {loading ? (
+            <CardLoader cards={2} className="mb-6" />
+          ) : (
+            <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5">
+              <SummaryCard title="total investments" data={data.length} />
+              <SummaryCard
+                title="total amount"
+                data={formatCurrency({
+                  value: data.reduce(
+                    (acc, datum) =>
+                      Number(datum.price) * Number(datum.units) + acc,
+                    0
+                  ),
+                  currency: user?.currency,
+                  locale: user?.locale,
+                })}
+              />
+            </div>
+          )}
+        </>
       )}
     </>
   );

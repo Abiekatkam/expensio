@@ -55,22 +55,46 @@ export default function SubscriptionsTable() {
 
   return (
     <>
-      <DataTable
-        options={{ user, onDelete, onEdit, onChange }}
-        filter={filter}
-        columns={SubscriptionsColumn}
-        data={sortByKey(sortByKey(data, "renewal_date"), "active")}
-        loading={loading}
-        filename="Subscriptions"
-        hideViewOptions
-      />
-      <Add
-        onHide={onHide}
-        onLookup={onLookup}
-        selected={selected}
-        mutate={mutate}
-        type="subscriptions"
-      />
+      {data.length > 0 ? (
+        <>
+          <DataTable
+            options={{ user, onDelete, onEdit, onChange }}
+            filter={filter}
+            columns={SubscriptionsColumn}
+            data={sortByKey(sortByKey(data, "renewal_date"), "active")}
+            loading={loading}
+            filename="Subscriptions"
+            hideViewOptions
+          />
+          <Add
+            onHide={onHide}
+            onLookup={onLookup}
+            selected={selected}
+            mutate={mutate}
+            type="subscriptions"
+          />
+        </>
+      ) : (
+        <div className="sm:w-[650px] sm:text-start text-center sm:ml-5">
+          <p className="text-balance">
+            It looks like you haven't added any subscriptions yet. To
+            effectively manage your expenses and keep track of your spending,
+            it's important to add all your active subscriptions. By doing so,
+            you'll gain better insights into your financial habits and can make
+            more informed decisions. Click the "Add Subscription" button in the
+            Expensio app to start managing your subscriptions today and take
+            control of your finances.
+          </p>
+          <Add
+            onHide={onHide}
+            onLookup={onLookup}
+            selected={selected}
+            mutate={mutate}
+            type="subscriptions"
+            isBtnIcon={true}
+          />
+        </div>
+      )}
     </>
   );
 }

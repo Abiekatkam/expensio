@@ -13,7 +13,6 @@ export async function POST(request) {
     where: { email },
     select: { email: true, id: true },
   });
-  console.log(user);
   if (user && user.id) {
     try {
       const token = generateToken({ email }, "10m");
