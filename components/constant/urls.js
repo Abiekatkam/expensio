@@ -77,6 +77,9 @@ export const applicationServerUrls = {
     modify: "/api/expenses",
     getExpenses: ({ from, to }) => `/api/expenses?from=${from}&to=${to}`,
   },
+  payment: {
+    checkout: "/api/payment/checkout",
+  },
 };
 
 export const getApiUrl = (

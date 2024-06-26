@@ -15,11 +15,10 @@ export const AuthProvider = (props) => {
   const router = useRouter();
   const { user, children, ...others } = props;
   const isValidToken = Cookies.get(cookieTokenName);
-
   useEffect(() => {
     async function getActiveSession() {
       if (isValidToken) {
-        router.push("/v1");
+        // router.push("/v1");
         setSession(user);
         setInitial(true);
       } else {

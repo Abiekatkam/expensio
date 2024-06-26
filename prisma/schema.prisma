@@ -96,7 +96,6 @@ model users {
   locale                     String          @default("en")
   order_identifier           String?
   order_store_id             String?
-  order_number               String?
   order_status               String?
   billing_start_date         String?
   plan_status                String          @default("basic")

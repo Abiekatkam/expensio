@@ -5,7 +5,7 @@ const messages = {
   loading: "Loading...",
   error: "Error occurred, please try again.",
   serverError: "Internal Server Error",
-  paymentSuccess: "Your payment is successful, page will reload in 6 seconds.",
+  paymentSuccess: "Your payment is successful.",
   paymentCancelled: "Payment is cancelled, please try again",
   premiumUpgrade: "Upgrade for access to premium features.",
   request: {
@@ -22,10 +22,6 @@ const messages = {
     unauthorized: "Unauthorized request",
   },
   export: "Export will begin shortly.",
-  payments: {
-    success: "Your payment is successful, page will reload in 6 seconds.",
-    dismissed: "Payment is cancelled, please try again",
-  },
 };
 
 export const emails = {
@@ -46,6 +42,10 @@ export const emails = {
   },
   welcome: {
     subject: "✨ Welcome to Expensio",
+  },
+  invoice: {
+    success: "Expensio Premium Payment Successful",
+    failed: "Expensio Premium Payment Failed",
   },
   usageLimit: {
     premiumExpired: {

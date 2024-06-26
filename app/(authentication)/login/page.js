@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import React from "react";
 import { FaIndianRupeeSign } from "react-icons/fa6";
@@ -13,7 +13,6 @@ const LoginPage = () => {
   if (isValidToken) {
     router.push("/v1");
   }
-
   return (
     <main className="m-auto flex h-[100vh] w-full flex-col items-center justify-center pl-2 pr-2 bg-white sm:max-w-[380px]  selection:bg-slate-700/60 selection:text-white  relative">
       <Link
@@ -31,7 +30,7 @@ const LoginPage = () => {
         Log in to Expensio to streamline your expense tracking and elevate your
         financial management.
       </p>
-      <LoginForm/>
+      <LoginForm />
     </main>
   );
 };

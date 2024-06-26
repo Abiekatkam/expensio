@@ -1,41 +1,51 @@
 "use client";
-import { usagePlan } from "@/components/constant/urls";
+import { applicationServerUrls, usagePlan } from "@/components/constant/urls";
 import { useUser } from "@/components/providers/auth-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/formats";
+import { getStripeConfig } from "@/lib/stripe";
 import React, { useState } from "react";
 
 const CheckIcon = () => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-		className="mr-1.5 h-5 w-5 text-green-600"
-	>
-		<path
-			fillRule="evenodd"
-			d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-			clipRule="evenodd"
-		></path>
-	</svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    className="mr-1.5 h-5 w-5 text-green-600"
+  >
+    <path
+      fillRule="evenodd"
+      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+      clipRule="evenodd"
+    ></path>
+  </svg>
 );
 
+const handleRedirectToCheckout = async () => {
+  const data  = await fetch(applicationServerUrls.payment.checkout, {
+    method: "POST",
+  });
+  const response = await data.json();
+  const stripe = await getStripeConfig();
+  await stripe.redirectToCheckout({ sessionId: response?.id });
+};
 
 const Plans = () => {
   const user = useUser();
-	const [loading, setLoading] = useState(false);
-	const { isPremium, isPremiumEnded } = user;
+  const [loading, setLoading] = useState(false);
+  const { isPremium, isPremiumEnded } = user;
   return (
     <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:gap-10 md:mt-0 lg:grid-cols-2">
       <Card className="w-full dark:bg-[#09090a]">
         <CardHeader className="p-4 pb-2">
           <h2 className="relative inline-block font-semibold text-primary dark:text-white">
-            Basic {!isPremium ? (
-            <span className="absolute right-0 top-0 w-fit rounded-full bg-blue-700 px-2 text-xs font-normal leading-[1.6] text-white">
-              Active
-            </span>
+            Basic{" "}
+            {!isPremium ? (
+              <span className="absolute right-0 top-0 w-fit rounded-full bg-blue-700 px-2 text-xs font-normal leading-[1.6] text-white">
+                Active
+              </span>
             ) : null}
           </h2>
           <p className="text-sm text-muted-foreground">
@@ -88,7 +98,7 @@ const Plans = () => {
               <span className="absolute right-0 top-0 w-fit rounded-full bg-blue-700 px-2 text-xs font-normal leading-[1.6] text-white">
                 Active
               </span>
-             ) : null}
+            ) : null}
           </h2>
           <p className="text-sm text-muted-foreground">
             Access to all premium features.
@@ -108,7 +118,8 @@ const Plans = () => {
             </span>
             <span className="mb-3 flex text-sm">
               <CheckIcon />
-              Add up to {usagePlan.premiumPlan.limit || 1000} entries per account
+              Add up to {usagePlan.premiumPlan.limit || 1000} entries per
+              account
             </span>
             <span className="mb-3 flex text-sm">
               <CheckIcon />
@@ -124,13 +135,13 @@ const Plans = () => {
             </span>
           </div>
           <Button
-            // onClick={() => {
-            //   if (!isPremium || isPremiumEnded) {
-            //     setLoading(true);
-            //     window.LemonSqueezy?.Url?.Open?.(checkoutUrl);
-            //     setTimeout(() => setLoading(false));
-            //   }
-            // }}
+            onClick={() => {
+              if (!isPremium || isPremiumEnded) {
+                setLoading(true);
+                handleRedirectToCheckout();
+                setTimeout(() => setLoading(false));
+              }
+            }}
             disabled={(isPremium && !isPremiumEnded) || loading}
             className="mb-3 mt-3 w-full text-sm"
             size={"sm"}
