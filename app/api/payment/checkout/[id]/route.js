@@ -21,7 +21,7 @@ export async function GET(request) {
     console.log(checkout_session);
     let nodemailerConfig = "";
 
-    if (checkout_session?.payment_status == "") {
+    if (checkout_session?.payment_status == "paid") {
       const invoiceSuccessEmailHtml = render(<InvoiceSuccessEmail />);
 
       nodemailerConfig = {
