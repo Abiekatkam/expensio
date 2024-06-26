@@ -57,7 +57,7 @@ const Plans = () => {
             <span className="inline-flex text-3xl font-extrabold tabular-nums text-primary">
               {formatCurrency({ value: 0, locale: "en", currency: "INR" })}
             </span>
-            <span className="ml-[6px] text-base text-primary">per month</span>
+            <span className="ml-[6px] text-base text-primary">per year</span>
           </div>
           <div className="mt-4 flex flex-col justify-center">
             <span className="mb-3 flex text-sm">
@@ -109,7 +109,7 @@ const Plans = () => {
             <span className="inline-flex text-3xl font-extrabold tabular-nums text-primary">
               {formatCurrency({ value: 50, locale: "en", currency: "INR" })}
             </span>
-            <span className="ml-[6px] text-base text-primary">per month</span>
+            <span className="ml-[6px] text-base text-primary">per year</span>
           </div>
           <div className="mt-4 flex flex-col justify-center">
             <span className="mb-3 flex text-sm">

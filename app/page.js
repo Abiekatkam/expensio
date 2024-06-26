@@ -72,7 +72,7 @@ const Home = () => {
                 </p>
                 <p className="mt-4 flex  items-center">
                   <span className="text-3xl font-extrabold flex items-center"><FaIndianRupeeSign /> {" "} 0</span>
-                  {" "}<span className="text-base  text-[#13131A]"> / month</span>
+                  {" "}<span className="text-base  text-[#13131A]"> per year</span>
                 </p>
                 <div className="mb-0 ml-1 mt-4 flex flex-col justify-center text-left ">
                   <span className="m-1 ml-0 flex items-center  text-[15px]">
@@ -112,7 +112,7 @@ const Home = () => {
                 </p>
                 <p className="mt-4 flex  items-center">
                   <span className="text-3xl font-extrabold flex items-center"><FaIndianRupeeSign /> {" "} 50</span>
-                  {" "}<span className="text-base  text-[#13131A]"> / month</span>
+                  {" "}<span className="text-base  text-[#13131A]"> per year</span>
                 </p>
                 <div className="mb-0 ml-1 mt-4 flex flex-col justify-center text-left ">
                   <span className="m-1 ml-0 flex items-center  text-[15px]">
