@@ -2,11 +2,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator fieldEncryptionMigrations {
-  provider = "prisma-field-encryption"
-  output   = "./migrations"
-}
-
 datasource db {
   provider          = "mongodb"
   url               = env("MONGODB_DATABASE_URL")

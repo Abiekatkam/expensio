@@ -4,7 +4,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Expensio | Abhishek Katkam",
+  title: "Expensio | Expense Tracker and Management System",
   description:
     "Expensio is a robust expense tracking and management tool designed to simplify financial oversight for individuals and businesses.",
 };

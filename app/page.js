@@ -6,7 +6,7 @@ import { FaCircleCheck, FaIndianRupeeSign, FaXTwitter } from "react-icons/fa6";
 const Home = () => {
   return (
     <div className="relative h-full text-[#13131A]">
-      <header className="relative m-auto h-[56px] max-w-4xl pt-3">
+      <header className="relative m-auto h-[56px] max-w-5xl pt-3">
         <div className="absolute left-0 right-0 top-3 z-20 flex items-center justify-between">
           <Link
             href={"/"}
@@ -32,7 +32,7 @@ const Home = () => {
           <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
         </div>
         <div className="mx-auto mb-16 mt-16 max-w-md px-3 text-center sm:max-w-3xl sm:px-0">
-          <h1 className="mt-4	text-4xl font-black leading-[1.15] tracking-[-0.03em] text-black sm:text-5xl sm:leading-[1.15]">
+          <h1 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-5xl font-sans py-2 md:py-3 relative z-20 font-black tracking-tight">
             Simplifying Financial Oversight with Advanced Expense Tracking and
             Management
           </h1>
@@ -71,8 +71,10 @@ const Home = () => {
                   Free forever with limits.
                 </p>
                 <p className="mt-4 flex  items-center">
-                  <span className="text-3xl font-extrabold flex items-center"><FaIndianRupeeSign /> {" "} 0</span>
-                  {" "}<span className="text-base  text-[#13131A]"> per year</span>
+                  <span className="text-3xl font-extrabold flex items-center">
+                    <FaIndianRupeeSign /> 0
+                  </span>{" "}
+                  <span className="text-base  text-[#13131A]"> per year</span>
                 </p>
                 <div className="mb-0 ml-1 mt-4 flex flex-col justify-center text-left ">
                   <span className="m-1 ml-0 flex items-center  text-[15px]">
@@ -111,8 +113,10 @@ const Home = () => {
                   Access to all premium features.
                 </p>
                 <p className="mt-4 flex  items-center">
-                  <span className="text-3xl font-extrabold flex items-center"><FaIndianRupeeSign /> {" "} 50</span>
-                  {" "}<span className="text-base  text-[#13131A]"> per year</span>
+                  <span className="text-3xl font-extrabold flex items-center">
+                    <FaIndianRupeeSign /> 50
+                  </span>{" "}
+                  <span className="text-base  text-[#13131A]"> per year</span>
                 </p>
                 <div className="mb-0 ml-1 mt-4 flex flex-col justify-center text-left ">
                   <span className="m-1 ml-0 flex items-center  text-[15px]">
@@ -150,7 +154,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto mb-16 mt-16 max-w-md px-3 text-center sm:max-w-2xl sm:px-0">
+
+        {/* <div className="mx-auto mb-16 mt-16 max-w-md px-3 text-center sm:max-w-2xl sm:px-0">
           <p className="text-lg">
             Hello! I'm{" "}
             <Link
@@ -212,7 +217,7 @@ const Home = () => {
             © {applicationClientUrls.config.currentYear}{" "}
             {applicationClientUrls.config.application}. All rights reserved.
           </p>
-        </div>
+        </div> */}
       </main>
     </div>
   );
